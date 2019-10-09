@@ -2,7 +2,7 @@
 
 ## 基础
 
-1、JavaScript 数组中有哪些迭代方法，分别有代表什么意思
+1、JavaScript 数组中有哪些迭代方法，分别代表什么意思
 map、filter、every、some、forEach
 
 - 衍生问题
@@ -76,7 +76,7 @@ componentDidUpdate
 - 衍生
   Webpack 提供了哪几种方式来实现代码切片（配置多个入口，抽取公有代码<CommontrunkPlugin、SplitChunk>）、动态加载(import、异步 chunk)
 
-4、现在又一个基于 Webpack 打包的 Web 应用，页面层级嵌套的比较深，在开发过程当中，调试最内层的代码比较麻烦，有没有什么可以优化的地方，说说它的原理
+4、现在有一个基于 Webpack 打包的 Web 应用，页面层级嵌套的比较深，在开发过程当中，调试最内层的代码比较麻烦，有没有什么可以优化的地方，说说它的原理
 
 HMR（模块热替换） 的核心就是客户端从服务器端拉取更新后的资源（准确地说，HMR 拉取的不是整个资源文件，而是 chunk diff,即 chunk 需要更新的部分）
 
