@@ -46,6 +46,11 @@ sayName()()()()
 
 回调函数、事件监听、发布/订阅、Promise 对象
 
+5、请解释以下变量声明提升
+
+6、ES6 里面数组去重可以怎么玩
+（Array.from(new Set(arr))、[...new Set(arr)]）
+
 ## React
 
 1、如果我现在想要在 React 的生命周期中获取某个 dom 元素来做一些使，可以怎么做
@@ -64,7 +69,7 @@ componentDidUpdate
 
 - 衍生
   1、服务端渲染有哪些实现方式，各有什么优缺点
-  2、基于 Node.js 的同构应用都有什么生命周期
+  2、基于 Node.js 的同构应用都有什么生命周期（componentDidMount 及之后的都不会执行）
 
 **代码切片**
 
