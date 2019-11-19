@@ -53,6 +53,30 @@ sayName()()()()
 6、ES6 里面数组去重可以怎么玩
 （Array.from(new Set(arr))、[...new Set(arr)]）
 
+7、微任务和宏任务
+
+```
+/ 每办理完一个业务，柜员就会问当前的客户，是否还有其他需要办理的业务。（检查还有没有微任务需要处理）
+// 而客户明确告知说没有事情以后，柜员就去查看后边还有没有等着办理业务的人。（结束本次宏任务、检查还有没有宏任务需要处理）
+// Event Loop。
+// 同步>异步，微任务>宏任务
+console.log(1);
+
+setTimeout(() => {
+  console.log(2);
+}, 0);  // 宏任务
+
+// new Promise在实例化的过程中所执行的代码都是同步进行的();
+// 而then中注册的回调才是异步执行的。
+// 微任务
+new Promise(resolve => {
+  resolve();
+  console.log(3);
+}).then(_ => console.log(4));
+
+console.log(5);
+```
+
 ## React
 
 1、如果我现在想要在 React 的生命周期中获取某个 dom 元素来做一些使，可以怎么做
