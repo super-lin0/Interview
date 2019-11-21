@@ -108,24 +108,29 @@ componentDidUpdate
 
 - 任意两个组件之间:事件总线（典型观察者模式） 或 vuex
 
-2、 谈一谈 Vue 中的插槽
+2、Vue.use(router) 应用中间件，都做了什么事
+
+3、 谈一谈 Vue 中的插槽
 
 - 具名插槽
 - 匿名插槽
 - 作用域插槽(要显示的数据来自子组件)
 
-3、响应式原理
+4、响应式原理
 
-4、用户在界面面修改了一个值，最终到 dom 更新，这个过程中发生了哪些事
+5、用户在界面面修改了一个值，最终到 dom 更新，这个过程中发生了哪些事
 用户在界面中修改值，触发 setter 函数，setter 触发 dep,dep 执行 notify 通知 watcher 更新，watcher 执行 updateComponent，updateComponent 需先 render，render 得到虚拟 dom，然后再执行\_update 得到最新的 dom 做更新
 
-5、Vue 源码中实现依赖收集，实现了三个类：
+6、Vue 源码中实现依赖收集，实现了三个类：
 
 Dep：扮演观察目标的角色，每一个数据都会有 Dep 类实例，它内部有个 subs 队列，subs 就是 subscribers 的意思，保存着依赖本数据的观察者，当本数据变更时，调用 dep.notify()通知观察者
 Watcher：扮演观察者的角色，进行观察者函数的包装处理。如 render()函数，会被进行包装成一个 Watcher 实例
 Observer：辅助的可观测类，数组/对象通过它的转化，可成为可观测数据
 
-6、数据流双向绑定
+7、数据流双向绑定
+
+8、初始化自定义组件的时候，我既写了 template、又写了 el、还写了 render，谁管用
+render
 
 ## Webpack
 
