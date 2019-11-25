@@ -85,6 +85,8 @@ componentDidMount + setTimeOut
 
 componentDidUpdate
 
+(ComponentDidUpdate 中 setState 会触发死循环)
+
 2、对 React 中间件有了解吗，谈谈它的原理以以及怎么实现一个中间件
 
 3、React 中的 key 有什么用
@@ -108,7 +110,18 @@ componentDidUpdate
 
 - 任意两个组件之间:事件总线（典型观察者模式） 或 vuex
 
-2、Vue.use(router) 应用中间件，都做了什么事
+2、在项目中使用 Vue-router 的步骤
+Vue.use(router) 应用 Vue 插件，都做了什么事，为什么能够做到先 use 然后再去创建实例
+（1）Vue.use(VueRouter); // 执行插件的 install 上
+（2）// 创建 router 实例
+
+```
+const router = new VueRouter({
+  mode: "history",
+  base: process.env.BASE_URL,
+  routes
+  });
+```
 
 3、 谈一谈 Vue 中的插槽
 
