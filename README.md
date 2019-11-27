@@ -124,8 +124,7 @@ setTimeout(() => {
 3. 原⽣生事件中修改状态
 
 componentDidMount(){
-  document.body.addEventListener('click',
-  this.changeValue, false)
+  document.body.addEventListener('click', this.changeValue, false)
 }
 
 changeValue = () => {
