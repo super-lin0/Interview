@@ -91,6 +91,55 @@ componentDidUpdate
 
 3、React 中的 key 有什么用
 
+4、
+
+- setState 是批量执行的，因此对同一个状态执行多次只起一次作用，多个状态更新可以放在同一个 setState 中进⾏
+
+```
+// 假如couter初始值为0，执⾏行行多次以后其结果是多少?
+this.setState({counter: this.state.counter + 1});
+this.setState({counter: this.state.counter + 2});
+
+```
+
+setState 通常是异步的，因此如果要获取到最新状态值有以 下三种⽅方式:
+
+- note
+  setState 只有在合成事件和生命周期函数中是异步的，在原生事件和 setTimeout 中都是同步的，这里的异步其实是批量更新。
+
+```
+1. 传递函数给setState方法
+
+this.setState(nextState => ({  counter: nextState.counter + 1})); // 1
+this.setState(nextState => ({  counter: nextState.counter + 1})); // 2
+this.setState(nextState => ({  counter: nextState.counter + 1})); // 3
+
+2. 使⽤用定时器器:
+
+setTimeout(() => {
+  this.changeValue();
+  console.log(this.state.counter);
+}, 0);
+
+3. 原⽣生事件中修改状态
+
+componentDidMount(){
+  document.body.addEventListener('click',
+  this.changeValue, false)
+}
+
+changeValue = () => {
+  this.setState({counter: this.state.counter + 1 })
+  console.log(this.state.counter)
+}
+
+```
+
+5、React 是如何把对 Hook 的调用和组件联系起来的？
+React 保持对当先渲染中的组件的追踪。多亏了 Hook 规范，我们得知 Hook 只会在 React 组件中被调用（或自定义 Hook —— 同样只会在 React 组件中被调用）。
+
+每个组件内部都有一个「记忆单元格」列表。它们只不过是我们用来存储一些数据的 JavaScript 对象。当你用 useState() 调用一个 Hook 的时候，它会读取当前的单元格（或在首次渲染时将其初始化），然后把指针移动到下一个。这就是多个 useState() 调用会得到各自独立的本地 state 的原因。
+
 ## Vue
 
 1、组件间通信
