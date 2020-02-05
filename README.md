@@ -6,8 +6,8 @@
 map、filter、every、some、forEach
 
 - 衍生问题
-  怎么样去实现一个自己的 map 方法
-  ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"].map(parseInt)
+  1、怎么样去实现一个自己的 map 方法
+  2、["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"].map(parseInt)
 
   ```
   const map = (array, fn) => {
@@ -192,6 +192,99 @@ Observer：辅助的可观测类，数组/对象通过它的转化，可成为�
 
 8、初始化自定义组件的时候，我既写了 template、又写了 el、还写了 render，谁管用
 render
+
+## 数据结构和算法
+
+1、给定一个整数数组 nums  和一个目标值 target，请你在该数组中找出和为目标值的那   两个   整数，并返回他们的数组下标。
+你可以假设每种输入只会对应一个答案。但是，你不能重复利用这个数组中同样的元素。
+
+- 暴力遍历-双层循环
+- 空间换时间
+
+```
+var twoSum = function(nums, target) {
+  const map = {};
+  const length = nums.length;
+  for (let i = 0; i < length; i++) {
+    let targetNum = target - nums[i];
+
+    if (targetNum in map) {
+      return [i, map[targetNum]];
+    }
+
+    map[nums[i]] = i;
+  }
+
+  return [];
+};
+```
+
+2、环形链表判定
+给定一个链表，判断链表中是否有环。为了表示给定链表中的环，我们使用整数 pos 来表示链表尾连接到链表中的位置（索引从 0 开始）。 如果 pos 是 -1，则在该链表中没有环。
+
+解题思路：
+
+```
+/**
+ * 解题思路:针对链表的每一个节点做一个标记，当遍历到某个节点，发现它被标记过，则证明是环形链表，
+ * 否则不是环形链表，结束循环，返回false
+ * @param {*} head
+ */
+var hasCycle1 = function(head) {
+  while (head) {
+    if (head.signal) {
+      return true;
+    } else {
+      head.signal = "signal";
+    }
+
+    head = head.next;
+  }
+  return false;
+};
+
+/**
+ *
+ * @param {ListNode} head
+ * @return {boolean}
+ * @description 用Set将每个节点缓存起来，判断Set中是否已经存在该节点
+ */
+var hasCycle2 = function(head) {
+  let cache = new Set();
+
+  while (head) {
+    if (cache.has(head)) {
+      return true;
+    } else {
+      cache.add(head);
+    }
+    head = head.next;
+  }
+  return false;
+};
+
+/**
+ *
+ * @param {ListNode} head
+ * @return {boolean}
+ * @description 操场跑圈，如果是个圈，跑得快的一定会追上跑得慢的
+ */
+var hasCycle = function(head) {
+  let slow = head;
+  let fast = head;
+
+  while (fast && fast.next) {
+    fast = fast.next.next;
+    slow = slow.next;
+
+    if (slow === fast) {
+      return true;
+    }
+  }
+
+  return false;
+};
+```
 
 ## Webpack
 
